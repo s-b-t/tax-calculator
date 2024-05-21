@@ -6,6 +6,7 @@ cashTips = float(input('Enter your cash tips earned: 💲 '))
 taxWithheld = float(input('Enter your taxes withheld: 💲 '))
 deductionsWithheld = float(input('Enter your total amounts deducted (Benefits, 401K, etc.): 💲 '))
 print('\n\n')
+
 hourlyPay = (regHours * hourlyRate)
 hourlyTotal = (hourlyPay + cashTips)
 grossEarnings = hourlyTotal
@@ -36,6 +37,6 @@ if hourlyPay != hourlyTotal:
     print('Hourly Total:', '💲', round(hourlyTotal, 2))
 else: 
     print('Hourly Pay/Hourly Total:', '💲', round(hourlyTotal, 2))
-    
+
 print('------------------------------')
 
