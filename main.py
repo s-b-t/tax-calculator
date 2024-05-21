@@ -32,11 +32,11 @@ else:
 if cashTips > 0:
     print('Cash Tips:', '💲', round(cashTips, 2))
 
-if hourlyPay != hourlyTotal:
-    print('Hourly Pay:', '💲', round(hourlyPay, 2))
-    print('Hourly Total:', '💲', round(hourlyTotal, 2))
+if hourlyPay != grossEarnings:
+    print('Hourly Pay Total:', '💲', round(hourlyPay, 2))
+    print('Gross Earnings:', '💲', round(grossEarnings, 2))
 else: 
-    print('Hourly Pay/Hourly Total:', '💲', round(hourlyTotal, 2))
+    print('Hourly Pay Total/Gross Earnings:', '💲', round(grossEarnings, 2))
 
 print('------------------------------')
 
