@@ -36,6 +36,6 @@ if hourlyPay != hourlyTotal:
     print('Hourly Total:', '💲', round(hourlyTotal, 2))
 else: 
     print('Hourly Pay/Hourly Total:', '💲', round(hourlyTotal, 2))
-
+    
 print('------------------------------')
 
