@@ -2,7 +2,16 @@
 def boldText(text):
     return "\033[1m" + text + "\033[0m"
 
-# Ensures that the program keeps asking the user to enter a valid input dealing with floats
+# Ensures that the program gets a name from the user and keeps asking the user to enter their name if they do not provide one
+def getName(prompt):
+    while True:
+        userName = input(prompt).strip()
+        if userName == '':
+            print(boldText('You did not enter your name. Please enter your name.'))
+        else:
+            return userName
+
+# Ensures that the program keeps asking the user to enter a valid input when dealing with float inputs
 def getFloatInput(prompt):
     while True:
         userInput = input(prompt)
@@ -14,8 +23,9 @@ def getFloatInput(prompt):
             except ValueError:
                 print(boldText('Invalid input. Please enter a valid number.'))
 
-# Employee Hours/Cash Tips (User Inputs Reg Hours, Hourly Rate, Cash Tips, Tax Withheld)
+# Prompts user to grab their most recent paystub and continue, then prompts user to enter all the pertinent values the program needs to calculate tax rate and finalize the employee breakdown
 input('Grab your most recent paystub and press [Enter] to continue...')
+name = getName('Please enter your name: ').upper()
 regHours = getFloatInput('Enter your regular hours worked: 🕘 ')
 hourlyRate = getFloatInput('Enter your hourly rate: 💲 ')
 cashTips = getFloatInput('Enter your cash tips earned: 💲 ')
@@ -34,9 +44,9 @@ taxRate = (taxWithheld / hourlyTotal)
 netPay = (grossEarnings - (taxWithheld + deductionsWithheld))
 checkAmount = (netPay - cashTips)
 
-# Employee Breakdown
+# Breakdown for user
 print('------------------------------')
-print(boldText('EMPLOYEE BREAKDOWN:'))
+print(boldText(f'EARNINGS/TAX BREAKDOWN FOR {name}:'))
 print('Employee Tax Rate:', round(taxRate, 3) * 100, '%')
 
 # If netPay is not equal to checkAmount, print both of them separately to show the amounts respectively
