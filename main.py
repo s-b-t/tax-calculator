@@ -16,7 +16,7 @@ def getFloatInput(prompt):
     while True:
         userInput = input(prompt)
         if userInput == '':
-            print(boldText('You need to enter a value.'))
+            print(boldText('You need to enter a value!'))
         else:
             try:
                 return float(userInput)
@@ -24,9 +24,9 @@ def getFloatInput(prompt):
                 print(boldText('Invalid input. Please enter a valid number.'))
 
 # Prompts user to grab their most recent paystub and continue, then prompts user to enter all the pertinent values the program needs to calculate tax rate and finalize the employee breakdown
-input('Grab your most recent paystub and press [Enter] to continue...')
+input('Grab your most recent paystub and press ' + boldText('[Enter]') + ' to continue... ')
 name = getName('Please enter your name: ').upper()
-regHours = getFloatInput('Enter your regular hours worked: 🕘 ')
+regHours = getFloatInput('Enter your regular hours worked in the pay period (weekly, bi-weekly, etc.): 🕘 ')
 hourlyRate = getFloatInput('Enter your hourly rate: 💲 ')
 cashTips = getFloatInput('Enter your cash tips earned: 💲 ')
 taxWithheld = getFloatInput('Enter your taxes withheld: 💲 ')
@@ -47,7 +47,7 @@ checkAmount = (netPay - cashTips)
 # Breakdown for user
 print('------------------------------')
 print(boldText(f'EARNINGS/TAX BREAKDOWN FOR {name}:'))
-print('Employee Tax Rate:', round(taxRate, 3) * 100, '%')
+print('Your Tax Rate:', round(taxRate, 3) * 100, '%')
 
 # If netPay is not equal to checkAmount, print both of them separately to show the amounts respectively
 if netPay != checkAmount:
