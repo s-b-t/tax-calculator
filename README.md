@@ -8,6 +8,6 @@ Windows: ```python main.py```
 
 MacOS: ```python3 main.py```
 
-This mini-program will calculate your Net Pay, Check Amount, Hourly Pay Total, and Gross Earnings based off inputting your regular hours worked, hourly rate, cash tips earned, taxes withheld, and total deductions.
+This mini-program will calculate your Tax Rate (%), Net Pay, Check Amount, Hourly Pay Total, and Gross Earnings based off inputting your regular hours worked, hourly rate, cash tips earned, taxes withheld, and total deductions.
 
 *Note*: The best way to use this program is by ensuring you have one of your checks handy already. Otherwise, you could estimate the values if you wanted to, but the calculations are intended to be exact, based off your paystub.
