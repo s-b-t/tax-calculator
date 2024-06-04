@@ -5,6 +5,7 @@ There are no dependencies required to run this program.
 After importing/cloning the code, make sure you're in the ```tax-calculator``` folder in your terminal and run the command:
 
 Windows: ```python main.py```
+
 MacOS: ```python3 main.py```
 
 This mini-program will calculate your Net Pay, Check Amount, Hourly Pay Total, and Gross Earnings based off inputting your regular hours worked, hourly rate, cash tips earned, taxes withheld, and total deductions.
