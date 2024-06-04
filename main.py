@@ -1,10 +1,26 @@
+# Boldens text for user to clearly discern what the program is trying to validate in order to enhance user experience
+def boldText(text):
+    return "\033[1m" + text + "\033[0m"
+
+# Ensures that the program keeps asking the user to enter a valid input dealing with floats
+def getFloatInput(prompt):
+    while True:
+        userInput = input(prompt)
+        if userInput == '':
+            print(boldText('You need to enter a value.'))
+        else:
+            try:
+                return float(userInput)
+            except ValueError:
+                print(boldText('Invalid input. Please enter a valid number.'))
+
 # Employee Hours/Cash Tips (User Inputs Reg Hours, Hourly Rate, Cash Tips, Tax Withheld)
 input('Grab your most recent paystub and press [Enter] to continue...')
-regHours = float(input('Enter your regular hours worked: 🕘 '))
-hourlyRate = float(input('Enter your hourly rate: 💲 '))
-cashTips = float(input('Enter your cash tips earned: 💲 '))
-taxWithheld = float(input('Enter your taxes withheld: 💲 '))
-deductionsWithheld = float(input('Enter your total amounts deducted (Benefits, 401K, etc.): 💲 '))
+regHours = getFloatInput('Enter your regular hours worked: 🕘 ')
+hourlyRate = getFloatInput('Enter your hourly rate: 💲 ')
+cashTips = getFloatInput('Enter your cash tips earned: 💲 ')
+taxWithheld = getFloatInput('Enter your taxes withheld: 💲 ')
+deductionsWithheld = getFloatInput('Enter your total amounts deducted (Benefits, 401K, etc.): 💲 ')
 print('\n')
 
 hourlyPay = (regHours * hourlyRate)
@@ -20,7 +36,7 @@ checkAmount = (netPay - cashTips)
 
 # Employee Breakdown
 print('------------------------------')
-print('EMPLOYEE BREAKDOWN:')
+print(boldText('EMPLOYEE BREAKDOWN:'))
 print('Employee Tax Rate:', round(taxRate, 3) * 100, '%')
 
 # If netPay is not equal to checkAmount, print both of them separately to show the amounts respectively
