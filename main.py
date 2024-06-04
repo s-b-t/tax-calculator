@@ -28,7 +28,7 @@ input('Grab your most recent paystub and press ' + boldText('[Enter]') + ' to co
 name = getName('Please enter your name: ').upper()
 regHours = getFloatInput('Enter your regular hours worked in the pay period (weekly, bi-weekly, etc.): 🕘 ')
 hourlyRate = getFloatInput('Enter your hourly rate: 💲 ')
-cashTips = getFloatInput('Enter your cash tips earned: 💲 ')
+cashTips = getFloatInput('Enter your cash tips earned (Type 0 if N/A): 💲 ')
 taxWithheld = getFloatInput('Enter your taxes withheld: 💲 ')
 deductionsWithheld = getFloatInput('Enter your total amounts deducted (Benefits, 401K, etc.): 💲 ')
 print('\n')
