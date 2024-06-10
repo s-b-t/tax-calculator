@@ -1,5 +1,7 @@
 ### Earnings/Tax Breakdown Calculator
 
+*This program is still in its BETA/WIP stage, I am adding more features continually.*
+
 There are no dependencies required to run this program.
 
 After importing/cloning the code, make sure you're in the ```tax-calculator``` folder in your terminal and run the command:
