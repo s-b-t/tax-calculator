@@ -77,11 +77,11 @@ print()
 name = getName('Enter your name: ').upper()
 startDate = getDate('Enter the start of the pay period ' + boldText('(MM/DD/YY)') + ': ')
 endDate = getDate('Enter the end date of the pay period ' + boldText('(MM/DD/YY)') + ': ')
-regHours = getFloatInput('Enter your regular hours worked in the pay period (weekly, bi-weekly, etc.): 🕘 ')
+regHours = getFloatInput('Enter your regular hours worked in the pay period (Weekly, Bi-Weekly, etc.): 🕘 ')
 hourlyRate = getFloatInput('Enter your hourly rate: 💲 ')
 cashTips = getFloatInput('Enter your cash tips/commissions earned (type 0 if N/A): 💲 ')
 taxWithheld = getFloatInput('Enter your taxes withheld: 💲 ')
-deductionsWithheld = getFloatInput('Enter your total amounts deducted (Benefits, 401K, etc.): 💲 ')
+deductionsWithheld = getFloatInput('Enter your total amounts deducted (Benefits, 401K, etc. -- type 0 if N/A): 💲 ')
 print('\n')
 
 hourlyPay = (regHours * hourlyRate)
@@ -132,7 +132,7 @@ while True:
     saveChoice = input("Would you like to save your earnings/tax breakdown to a text file? " + boldText('(Y/N)') + ": ").strip().lower()
     print()
     if saveChoice == "":
-        print(boldText("You did not enter an answer. Please answer Yes or No."))
+        print(boldText("You did not enter an answer. Please answer (Y)es or (N)o."))
         print()
     elif saveChoice in ['yes', 'y']:
         saveToTextFile(outputData)
@@ -142,6 +142,6 @@ while True:
         print()
         break
     else:
-        print(boldText("Please answer Yes or No."))
+        print(boldText("Please answer (Y)es or (N)o."))
         print()
         continue
