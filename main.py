@@ -133,7 +133,7 @@ while True:
 # Calls on getFloatInput function and prompts the user to enter the proper floated integers in order to factor in cashTips, taxWithheld, and deductionsWithheld
 cashTips = getFloatInput('Enter your cash tips/commissions earned ' + boldText('(type 0 if N/A)') + ': 💲 ')
 taxWithheld = getFloatInput('Enter your ' + boldText('total') + ' taxes withheld ' + boldText('(FICA + Medicare + Social Security, etc.)') + ': 💲 ')
-deductionsWithheld = getFloatInput('Enter your ' + boldText('total') + ' amounts deducted ' + boldText('(Benefits + 401K, etc. -- type 0 if N/A)') + ': 💲 ')
+deductionsWithheld = getFloatInput('Enter your ' + boldText('total') + ' amounts deducted ' + boldText('(Benefits + 401K + Retirement, etc. -- type 0 if N/A)') + ': 💲 ')
 print('\n')
 
 # Calculates user hourlyPay, overtimePay, totalEarnings
