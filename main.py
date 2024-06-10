@@ -1,3 +1,5 @@
+import re
+
 # Boldens text for user to clearly discern what the program is trying to validate in order to enhance user experience
 def boldText(text):
     return "\033[1m" + text + "\033[0m"
@@ -8,6 +10,8 @@ def getName(prompt):
         userName = input(prompt).strip()
         if userName == '':
             print(boldText('You did not enter your name. Please enter your name.'))
+        elif not re.match("^[A-Za-z ]*$", userName):
+            print(boldText('Invalid name. Please enter a name using only alphabetic characters and spaces.'))
         else:
             return userName
 
@@ -16,19 +20,38 @@ def getFloatInput(prompt):
     while True:
         userInput = input(prompt)
         if userInput == '':
-            print(boldText('You need to enter a value!'))
+            print(boldText('You need to enter a value.'))
         else:
             try:
                 return float(userInput)
             except ValueError:
                 print(boldText('Invalid input. Please enter a valid number.'))
 
+def saveToTextFile(outputData):
+    while True:
+        fileName = input("Enter the file name you'd like to save your earnings/tax breakdown to. " + boldText("You do not need to add a file extension.") + " A .txt file will be saved by default: ")
+        if fileName == "":
+            print(boldText("You did not enter a file name. Please enter a file name."))
+            continue
+
+        if not fileName.endswith(".txt"):
+            fileName += ".txt"
+        try:
+            with open(fileName, 'w') as file:
+                file.write(outputData)
+            print(f"Earnings/tax breakdown successfully saved to " + boldText(f'{fileName}'))
+            break
+        except Exception as e:
+            print("An error occurred while trying to save the file: " + boldText(f'{e}'))
+            continue
+        
+
 # Prompts user to grab their most recent paystub and continue, then prompts user to enter all the pertinent values the program needs to calculate tax rate and finalize the employee breakdown
 input('Grab your most recent paystub and press ' + boldText('[Enter]') + ' to continue... ')
-name = getName('Please enter your name: ').upper()
+name = getName('Enter your name: ').upper()
 regHours = getFloatInput('Enter your regular hours worked in the pay period (weekly, bi-weekly, etc.): 🕘 ')
 hourlyRate = getFloatInput('Enter your hourly rate: 💲 ')
-cashTips = getFloatInput('Enter your cash tips earned (Type 0 if N/A): 💲 ')
+cashTips = getFloatInput('Enter your cash tips/commissions earned (Type 0 if N/A): 💲 ')
 taxWithheld = getFloatInput('Enter your taxes withheld: 💲 ')
 deductionsWithheld = getFloatInput('Enter your total amounts deducted (Benefits, 401K, etc.): 💲 ')
 print('\n')
@@ -45,29 +68,49 @@ netPay = (grossEarnings - (taxWithheld + deductionsWithheld))
 checkAmount = (netPay - cashTips)
 
 # Breakdown for user
-print('------------------------------')
-print(boldText(f'EARNINGS/TAX BREAKDOWN FOR {name}:'))
-print('Your Tax Rate:', round(taxRate, 3) * 100, '%')
+outputData = (
+    '----------------------------------------------------\n'
+    + boldText(f'EARNINGS/TAX BREAKDOWN FOR {name} __ THRU __:') + '\n'
+    + f'Your Tax Rate: {round(taxRate, 3) * 100} %\n'
+)
 
 # If netPay is not equal to checkAmount, print both of them separately to show the amounts respectively
 if netPay != checkAmount:
-    print('Net Pay:', '💲', round(netPay, 2))
-    print('Check Amount:', '💲', round(checkAmount, 2))
+    outputData += f'Net Pay: 💲 {round(netPay, 2)}\n'
+    outputData += f'Check Amount: 💲 {round(checkAmount, 2)}\n'
 # Otherwise, if they are equal, combine them when displaying to the user
 else: 
-    print('Net Pay/Check Amount:', '💲', round(checkAmount, 2))
+    outputData += f'Net Pay/Check Amount: 💲 {round(checkAmount, 2)}\n'
 
 # If cashTips are greater than 0, make sure user sees that displayed in the breakdown, otherwise if 0, no need to display to user
 if cashTips > 0:
-    print('Cash Tips:', '💲', round(cashTips, 2))
+    outputData += f'Cash Tips/Commissions: 💲 {round(cashTips, 2)}\n'
 
 # If hourlyPay is not equal to grossEarnings, print both of them separately to show the amounts respectively
 if hourlyPay != grossEarnings:
-    print('Hourly Pay Total:', '💲', round(hourlyPay, 2))
-    print('Gross Earnings:', '💲', round(grossEarnings, 2))
+    outputData += f'Hourly Pay Total: 💲 {round(hourlyPay, 2)}\n'
+    outputData += f'Gross Earnings: 💲 {round(grossEarnings, 2)}\n'
 # Otherwise, if they are equal, combine them when displaying to the user
 else: 
-    print('Hourly Pay Total/Gross Earnings:', '💲', round(grossEarnings, 2))
+    outputData += f'Hourly Pay Total/Gross Earnings: 💲 {round(grossEarnings, 2)}\n'
 
-print('------------------------------')
+outputData += '----------------------------------------------------'
+
+# Print the output data
+print(outputData)
+
+# Ask the user if they want to save the output to a text file
+while True:
+    saveChoice = input("Would you like to save your earnings/tax breakdown to a text file? " + boldText('(Y/N)') + ": ").strip().lower()
+    if saveChoice == "":
+        print(boldText("You did not enter an answer. Please answer Yes or No."))
+    elif saveChoice in ['yes', 'y']:
+        saveToTextFile(outputData)
+        break
+    elif saveChoice in ['n', 'no']:
+        print(boldText("Earnings/tax breakdown was not saved."))
+        break
+    else:
+        print(boldText("Please answer Yes or No."))
+        continue
 
