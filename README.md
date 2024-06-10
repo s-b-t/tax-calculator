@@ -10,7 +10,7 @@ Windows: ```python main.py```
 
 MacOS: ```python3 main.py```
 
-This mini terminal program will calculate your Tax Rate, Net Pay, Check Amount, Hourly Pay Total, and Gross Earnings based off inputting your regular hours worked, hourly rate, cash tips earned, taxes withheld, and total deductions. It only allows you to enter the correct values i.e. strings, floated integers, date where/when appropriate. All validations working.
+This mini terminal program will calculate your Tax Rate, Net Pay, Check Amount, Hourly Pay Total, and Gross Earnings based off inputting your regular hours worked, hourly rate, cash tips earned, taxes withheld, and total deductions (benefits, 401K, etc. if applicable). It only allows the user to enter correct values i.e. strings, floated integers, date where/when appropriate. All validations working.
 
 It will also allow you to save the output of your earnings/tax breakdown to a text file. The idea is to be able to have a record of your entries and be able to see a print out of multiple weeks' paystubs.
 
