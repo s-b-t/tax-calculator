@@ -1,4 +1,4 @@
-# Imports 'regular expression' library for validations on alphabetic-only entries
+# Imports 'regular expression' (RegEx) library for validations on alphabetic-only entries
 import re
 # Imports datetime usage/validations for user input involving date
 from datetime import datetime
