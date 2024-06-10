@@ -75,21 +75,47 @@ print()
 input('Grab your most recent paystub and press ' + boldText('[Enter]') + ' to continue... ')
 print()
 name = getName('Enter your name: ').upper()
-startDate = getDate('Enter the start of the pay period ' + boldText('(MM/DD/YY)') + ': ')
-endDate = getDate('Enter the end date of the pay period ' + boldText('(MM/DD/YY)') + ': ')
-regHours = getFloatInput('Enter your regular hours worked in the pay period (Weekly, Bi-Weekly, etc.): 🕘 ')
+startDate = getDate('Enter the ' + boldText('start date') + ' of the pay period in ' + boldText('(MM/DD/YY)') + ' format: ')
+endDate = getDate('Enter the ' + boldText('end date') + ' of the pay period in ' + boldText('(MM/DD/YY)') + ' format: ')
+regHours = getFloatInput('Enter your regular hours worked in the pay period ' + boldText('(Weekly, Bi-Weekly, etc.)') + ': 🕘 ')
 hourlyRate = getFloatInput('Enter your hourly rate: 💲 ')
-cashTips = getFloatInput('Enter your cash tips/commissions earned (type 0 if N/A): 💲 ')
+
+overtimeHours = 0
+overtimeRate = 1.5
+while True:
+    overtimeApplicable = input("Have you worked overtime in this pay period? " + boldText("(Y/N)") + ": ").strip().lower()
+    if overtimeApplicable == "":
+        print()
+        print(boldText("You did not enter an answer. Please answer (Y)es or (N)o."))
+        print()
+    elif overtimeApplicable in ['yes', 'y']:
+        overtimeHours = getFloatInput('Enter your overtime hours worked in the pay period: 🕘 ')
+        overtimeRate = getFloatInput('Enter your overtime rate ' + boldText('(1.5 for time and a half, 2 for double time)') + ': ')
+        break
+    elif overtimeApplicable in ['no', 'n']:
+        print()
+        print(boldText("Proceeding without overtime calculations."))
+        print()
+        break
+    else:
+        print()
+        print(boldText("Please answer (Y)es or (N)o."))
+        print()
+        continue
+
+cashTips = getFloatInput('Enter your cash tips/commissions earned ' + boldText('(type 0 if N/A)') + ': 💲 ')
 taxWithheld = getFloatInput('Enter your taxes withheld: 💲 ')
-deductionsWithheld = getFloatInput('Enter your total amounts deducted (Benefits, 401K, etc. -- type 0 if N/A): 💲 ')
+deductionsWithheld = getFloatInput('Enter your total amounts deducted ' + boldText('(Benefits, 401K, etc. -- type 0 if N/A)') + ': 💲 ')
 print('\n')
 
+# Calculate earnings
 hourlyPay = (regHours * hourlyRate)
-hourlyTotal = (hourlyPay + cashTips)
-grossEarnings = hourlyTotal
+overtimePay = (overtimeHours * hourlyRate * overtimeRate)
+totalEarnings = hourlyPay + overtimePay + cashTips
+grossEarnings = totalEarnings
 
 # Employee Tax Rate
-taxRate = (taxWithheld / hourlyTotal)
+taxRate = (taxWithheld / totalEarnings)
 
 # Net Pay/Check Amount
 netPay = (grossEarnings - (taxWithheld + deductionsWithheld))
@@ -114,13 +140,11 @@ else:
 if cashTips > 0:
     outputData += f'Cash Tips/Commissions: 💲 {round(cashTips, 2)}\n'
 
-# If hourlyPay is not equal to grossEarnings, print both of them separately to show the amounts respectively
-if hourlyPay != grossEarnings:
-    outputData += f'Hourly Pay Total: 💲 {round(hourlyPay, 2)}\n'
-    outputData += f'Gross Earnings: 💲 {round(grossEarnings, 2)}\n'
-# Otherwise, if they are equal, combine them when displaying to the user
-else: 
-    outputData += f'Hourly Pay Total/Gross Earnings: 💲 {round(grossEarnings, 2)}\n'
+# If hourlyPay and overtimePay are not equal to grossEarnings, print them separately to show the amounts respectively
+outputData += f'Hourly Pay Total: 💲 {round(hourlyPay, 2)}\n'
+if overtimeHours > 0:
+    outputData += f'Overtime Pay Total: 💲 {round(overtimePay, 2)}\n'
+outputData += f'Gross Earnings: 💲 {round(grossEarnings, 2)}\n'
 
 outputData += '-------------------------------------------------------'
 
@@ -129,6 +153,7 @@ print(outputData)
 
 # Ask the user if they want to save the output to a text file
 while True:
+    print('\n')
     saveChoice = input("Would you like to save your earnings/tax breakdown to a text file? " + boldText('(Y/N)') + ": ").strip().lower()
     print()
     if saveChoice == "":
