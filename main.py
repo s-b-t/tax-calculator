@@ -10,6 +10,7 @@ def boldText(text):
 # Ensures that the program gets a name from the user and keeps asking the user to enter their name if they do not provide one
 def getName(prompt):
     while True:
+        # Sets userName equivalent to an input required from the user when prompted to enter their name and strips whitespace from the entry
         userName = input(prompt).strip()
         # If userName is blank, keep prompting the user to enter their name
         if userName == '':
