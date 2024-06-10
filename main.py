@@ -50,7 +50,7 @@ def getDate(prompt):
 
 def saveToTextFile(outputData):
     while True:
-        fileName = input("Enter the file name you'd like to save your earnings/tax breakdown to. " + boldText("You do not need to add a file extension.") + " A .txt file will be saved by default: ")
+        fileName = input("Enter the file name you'd like to save your earnings/tax breakdown to. " + boldText("You do not need to add a file extension.") + " A .txt (text file) extension will be automatically appended to the file name you type: ")
         print()
         if fileName == "":
             print(boldText("You did not enter a file name. Please enter a file name."))
@@ -98,7 +98,7 @@ checkAmount = (netPay - cashTips)
 # Breakdown for user
 outputData = (
     '-------------------------------------------------------\n'
-    + f'EARNINGS/TAX BREAKDOWN FOR {name} {startDate} THRU {endDate}:' + '\n'
+    + f'EARNINGS/TAX BREAKDOWN FOR {name} {startDate} -- {endDate}:' + '\n'
     + f'Your Tax Rate: {round(taxRate, 3) * 100} %\n'
 )
 
