@@ -58,8 +58,8 @@ def saveToTextFile(outputData):
             print()
             continue
         
-
 # Prompts user to grab their most recent paystub and continue, then prompts user to enter all the pertinent values the program needs to calculate tax rate and finalize the employee breakdown
+print()
 input('Grab your most recent paystub and press ' + boldText('[Enter]') + ' to continue... ')
 print()
 name = getName('Enter your name: ').upper()
