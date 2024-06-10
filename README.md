@@ -1,5 +1,7 @@
 ### Earnings/Tax Breakdown Calculator
 
+*This program is still in its BETA/WIP stage, I am adding more features continually.*
+
 There are no dependencies required to run this program.
 
 After importing/cloning the code, make sure you're in the ```tax-calculator``` folder in your terminal and run the command:
@@ -8,6 +10,8 @@ Windows: ```python main.py```
 
 MacOS: ```python3 main.py```
 
-This mini terminal program will calculate your Tax Rate, Net Pay, Check Amount, Hourly Pay Total, and Gross Earnings based off inputting your regular hours worked, hourly rate, cash tips earned, taxes withheld, and total deductions.
+This mini terminal program will calculate your Tax Rate, Net Pay, Check Amount, Hourly Pay Total, and Gross Earnings based off inputting your regular hours worked, hourly rate, cash tips earned, taxes withheld, and total deductions. It only allows you to enter the correct values i.e. strings, floated integers, date where/when appropriate. All validations working.
+
+It will also allow you to save the output of your earnings/tax breakdown to a text file. The idea is to be able to have a record of your entries and be able to see a print out of multiple weeks' paystubs.
 
 *Note*: The best way to use this program is by ensuring you have one of your checks handy already. Otherwise, you can estimate the values if you wanted to--but the calculations are intended to be exact based off your paystub.
