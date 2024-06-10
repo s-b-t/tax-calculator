@@ -4,7 +4,7 @@
 
 There are no additional dependencies required to run this program that you'll have to install, but ```import re``` (Regular Expression aka RegEx) and ```from datetime import datetime``` are required imports.
 
-After importing/cloning the code, make sure you're in the ```tax-calculator``` folder in your terminal and run the command:
+After importing/cloning the code, make sure you're in the ```tax-calculator``` folder in your terminal and run the following command:
 
 Windows: ```python main.py```
 
