@@ -15,3 +15,5 @@ This terminal program will calculate your Tax Rate, Net Pay, Check Amount, Hourl
 It will also allow you to save the output of your earnings/tax breakdown to a text file. The idea is to eventually be able to have a record of your entries and be able to see a print out of multiple weeks' paystubs.
 
 *Note*: The best way to use this program is by ensuring you have one of your checks handy already. Otherwise, you can estimate the values if you wanted to--but the calculations are intended to be exact based off your paystub.
+
+-Option to QUIT still needs to be implemented.
