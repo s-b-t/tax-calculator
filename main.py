@@ -134,7 +134,7 @@ while True:
 cashTips = getFloatInput('Enter your cash tips/commissions earned ' + boldText('(type 0 if N/A)') + ': 💲 ')
 taxWithheld = getFloatInput('Enter your ' + boldText('total') + ' taxes withheld ' + boldText('(FICA + Medicare + Social Security, etc.)') + ': 💲 ')
 deductionsWithheld = getFloatInput('Enter your ' + boldText('total') + ' amounts deducted ' + boldText('(Benefits + 401K + Retirement, etc. -- type 0 if N/A)') + ': 💲 ')
-print('\n')
+print()
 
 # Calculates user hourlyPay, overtimePay, totalEarnings
 hourlyPay = (regHours * hourlyRate)
@@ -182,13 +182,12 @@ print(outputData)
 
 # Ask the user if they want to save the output to a text file after the breakdown appears
 while True:
-    print('\n')
+    print()
     saveChoice = input("Would you like to save your earnings/tax breakdown to a text file? " + boldText('(Y/N)') + ": ").strip().lower()
     print()
     # If their choice is blank, alert the user they need to answer Y or N
     if saveChoice == "":
         print(boldText("You did not enter an answer. Please answer (Y)es or (N)o."))
-        print()
     # Otherwise and if their choice is Y, saves the outputData (earnings/tax breakdown) to a text file
     elif saveChoice in ['yes', 'y']:
         saveToTextFile(outputData)
@@ -201,5 +200,4 @@ while True:
     # Otherwise, if any other invalid input is tried, program alerts the user to please choose Y or N
     else:
         print(boldText("Please answer (Y)es or (N)o."))
-        print()
         continue
