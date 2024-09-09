@@ -152,7 +152,7 @@ checkAmount = (netPay - cashTips)
 # Earnings/tax breakdown for user towards the end of the program
 outputData = (
     '-------------------------------------------------------\n'
-    + f'EARNINGS/TAX BREAKDOWN FOR {name} {startDate}--{endDate}:' + '\n'
+    + f'EARNINGS/TAX BREAKDOWN FOR {name} {startDate}-{endDate}:' + '\n'
     + f'Your Tax Rate: {round(taxRate, 3) * 100} %\n'
 )
 
